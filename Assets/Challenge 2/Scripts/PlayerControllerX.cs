@@ -2,36 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerControllerX : MonoBehaviour
 {
     public GameObject dogPrefab;
-    private bool allowSpawn;
+    private float delayTime = 2.0f;
+    private float counter;
     // Update is  vv x`called once per frame
 
 
     void Start(){
-        
-
+        Debug.Log("Game Start")
     }
 
 
     void Update()
     {
-
-
+        counter += Time.deltaTime;
          // On spacebar press, send dog
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(SpawnDog());
+                if(counter > delayTime){
+                    SpawnDog();
 
+                    counter = 0f;
+                }
+           
         }
 
         
 
     }
 
-    IEnumerator SpawnDog(){       
+    private void SpawnDog(){       
         Instantiate(dogPrefab, transform.position, dogPrefab.transform.rotation);
-        yield return new WaitForSeconds(3);
     }
 }
