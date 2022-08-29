@@ -12,7 +12,7 @@ public class PlayerControllerX : MonoBehaviour
 
 
     void Start(){
-        Debug.Log("Game Start")
+        Debug.Log("Game Start");
     }
 
 
